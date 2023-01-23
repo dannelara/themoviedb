@@ -1,0 +1,49 @@
+.card_big {
+  border-radius: 10px;
+  position: relative;
+  max-width: var(--card-max-width);
+  height: 100%;
+  /*
+  overflow hidden to remove edges from the description part.  
+  */
+  overflow: hidden;
+}
+
+.card_description {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+  background: var(--bg-color-gradient);
+}
+
+.card_description > div {
+  width: 90%;
+}
+.card_description > div > span {
+  display: flex;
+  width: 100%;
+  color: var(--text-color-default);
+}
+
+.text_small {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-700);
+}
+
+.text_xsmall {
+  font-size: var(--font-size-xsmall);
+  font-weight: var(--font-weight-500);
+}
+
+@media screen and (max-width: 428px) {
+  .card_big {
+    width: 100%;
+    min-width: 100%;
+    max-height: var(--card-max-height);
+  }
+}

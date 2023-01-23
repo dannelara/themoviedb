@@ -1,0 +1,151 @@
+/*
+Key frames.
+*/
+@keyframes slide_left_right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+/**/
+.burger_menu_active {
+  display: none;
+}
+
+div[toggle="true"] {
+  display: flex;
+}
+
+.nav {
+  width: 278px;
+  background-color: transparent;
+  background-color: var(--bg-color-dark);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow-right);
+}
+
+.title_wrapper {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: var(--text-line-height);
+}
+
+.header_title {
+  font-size: var(--text-font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-600);
+  font-style: normal;
+  color: var(--text-color-default);
+}
+
+.nav_content {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.burger_menu {
+  display: none;
+}
+
+.nav_items {
+  display: flex !important;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav_link_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
+}
+
+.nav_link {
+  width: fit-content;
+  font-size: var(--text-font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-600);
+  font-style: normal;
+  color: var(--text-color-default);
+  line-height: 29px;
+}
+
+@media screen and (max-width: 424px) {
+  .nav {
+    background-color: transparent;
+    width: 100%;
+    padding: 1em 0 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .title_wrapper {
+    width: fit-content;
+  }
+  .nav_content {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .burger_menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav_items_big {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    animation: slide_left_right 0.2s ease-in;
+  }
+
+  .nav_items_left {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: var(--bg-color-dark);
+    box-shadow: var(--box-shadow-right);
+  }
+
+  .nav_links_container {
+    height: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav_active_right {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  .burger_menu_active {
+    display: block;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 1em;
+  }
+}

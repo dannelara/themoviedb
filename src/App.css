@@ -1,8 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  --bg-color-light-dark: #1e1e1e;
-  --bg-color-dark: #171717;
-  --card-min-width: 184px;
-  --card-min-height: 276px;
+.wrapper_flex {
+  position: relative;
+
+  height: auto;
+  background-color: var(--bg-color-light-dark);
+}
+
+@media screen and (min-width: 424px) {
+  .wrapper_flex {
+    display: flex;
+    /* height: 100%;
+    width: 278px; */
+  }
 }

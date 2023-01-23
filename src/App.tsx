@@ -1,11 +1,16 @@
 import React from "react";
 import "./App.css";
-import { Main } from "components";
+import { Main, Nav, SearchBar } from "components";
+import GlobalState from "global/GlobalState";
 
 function App() {
   return (
-    <div>
-      <Main />
+    <div className="wrapper_flex">
+      <GlobalState>
+        <Nav />
+
+        <Main />
+      </GlobalState>
     </div>
   );
 }

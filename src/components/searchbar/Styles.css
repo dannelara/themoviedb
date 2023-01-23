@@ -1,0 +1,51 @@
+.search_bar_wrapper {
+  padding-top: 2em;
+  width: 100%;
+  height: fit-content;
+}
+
+.input_wrapper {
+  margin-left: 1em;
+  max-width: var(--length-300);
+  position: relative;
+  display: flex;
+  padding: 0.2em;
+  /*
+    40.31 Looks to big on my screen. Change it back later
+  */
+  height: 30px;
+  gap: 0.5em;
+  border-radius: var(--border-radius-small);
+  background-color: var(--bg-color-white);
+}
+
+.search_bar_input {
+  flex-grow: 2;
+  padding: 0.1em;
+  border-radius: var(--border-radius-small);
+  border-style: none;
+}
+
+.search_bar_input:focus {
+  outline: none;
+}
+
+.search_bar_icon {
+  max-width: 22px;
+  max-height: 22px;
+  margin: auto 0;
+}
+
+@media screen and (max-width: 424px) {
+  .search_bar_wrapper {
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input_wrapper {
+    margin-left: 0;
+    width: 90%;
+  }
+}
