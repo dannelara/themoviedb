@@ -9,10 +9,15 @@
     rgba(0, 0, 0, 0.7) 0%,
     rgba(0, 0, 0, 0) 98.77%
   );
-  --card-min-width: 184px;
-  --card-min-height: 276px;
-  --card-max-height: 217.43px;
+
+  /*Cards*/
+  --card-min-width: 386.86px;
   --card-max-width: 680px;
+  --card-big-min-height: 217.43px;
+  --card-small-min-height: 276.39px;
+
+  --card-max-height: 382.18px;
+
   /*
   Text.  
   */
@@ -39,6 +44,13 @@
   --length-300: 385px;
 }
 
+.text_big {
+  font-size: var(--text-font-size);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-600);
+  font-style: normal;
+  color: var(--text-color-default);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

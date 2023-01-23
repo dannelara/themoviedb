@@ -9,7 +9,7 @@ export const Section: React.FC<SectionProps> = ({ title, children }) => {
   return (
     <div className="content_wrapper">
       <div>
-        <span>{title}</span>
+        <span className="text_big">{title}</span>
       </div>
 
       <div className="content_items">{children}</div>

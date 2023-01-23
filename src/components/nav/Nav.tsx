@@ -20,7 +20,7 @@ export const Nav: React.FC = ({}) => {
     <div className="nav">
       <div className="nav_content">
         <div className="title_wrapper">
-          <h1 className="header_title">Movies</h1>
+          <h1 className="text_big">Movies</h1>
         </div>
 
         {!is_nav_active && (
