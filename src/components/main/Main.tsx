@@ -2,5 +2,5 @@ import React from "react";
 import "./Main.css";
 
 export const Main: React.FC = ({}) => {
-  return <div></div>;
+  return <div className="main"></div>;
 };

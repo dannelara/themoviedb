@@ -6,8 +6,3 @@
   --card-min-width: 184px;
   --card-min-height: 276px;
 }
-
-.main {
-  min-height: 100vh;
-  background-color: var(--bg-color-light-dark);
-}
