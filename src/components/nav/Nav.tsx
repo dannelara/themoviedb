@@ -3,13 +3,13 @@ import "./Styles.css";
 import burger_menu_open_image from "assets/images/MenuIcon.png";
 import burger_menu_close_image from "assets/images/Union.png";
 import sections from "assets/data/sections";
-
+import { Link } from "react-router-dom";
 export const Nav: React.FC = ({}) => {
   const [is_nav_active, set_is_nav_active] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const onClick = () => {
+  const activate_nav = () => {
     set_is_nav_active(!is_nav_active);
     menuRef.current?.getAttribute("toggle")
       ? menuRef.current?.removeAttribute("toggle")
@@ -24,11 +24,7 @@ export const Nav: React.FC = ({}) => {
         </div>
 
         {!is_nav_active && (
-          <div
-            className="burger_menu"
-            // onClick={() => set_is_nav_active(!is_nav_active)}
-            onClick={onClick}
-          >
+          <div className="burger_menu" onClick={activate_nav}>
             <img src={`${burger_menu_open_image}`} alt="burger_menu_open" />
           </div>
         )}
@@ -40,9 +36,14 @@ export const Nav: React.FC = ({}) => {
                 {sections.map((section, key) => (
                   <div className="nav_link_wrapper" key={key}>
                     <img src={`${section.icon_path}`} alt="link icon" />
-                    <a href={`${section.href}`} key={key} className="nav_link">
+                    <Link
+                      to={`${section.href}`}
+                      key={key}
+                      className="nav_link"
+                      onClick={activate_nav}
+                    >
                       {section.name}
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -51,7 +52,7 @@ export const Nav: React.FC = ({}) => {
 
           {is_nav_active && (
             <div className="nav_active_right">
-              <div className="burger_menu_active" onClick={onClick}>
+              <div className="burger_menu_active" onClick={activate_nav}>
                 <img
                   src={`${burger_menu_close_image}`}
                   alt="burger_menu_close"
@@ -62,49 +63,5 @@ export const Nav: React.FC = ({}) => {
         </div>
       </div>
     </div>
-
-    // <div className="nav_small">
-    //   <div className="nav_content">
-    //     <div>
-    //       <h1 className="header_title">Movies</h1>
-    //     </div>
-    //     <div>
-    //       {!is_nav_active && (
-    //         <div
-    //           className="burger_menu"
-    //           onClick={() => set_is_nav_active(!is_nav_active)}
-    //         >
-    //           <img src={`${burger_menu_open_image}`} alt="burger_menu_open" />
-    //         </div>
-    //       )}
-    //     </div>
-    //   </div>
-
-    //   {is_nav_active && (
-    //     <div className="nav_active_wrapper">
-    //       <div className="nav_active_left">
-    //         <div className="nav_items_wrapper">
-    //           {sections.map((section, key) => (
-    //             <div className="nav_link_wrapper">
-    //               <img src={`${section.icon_path}`} alt="link icon" />
-    //               <a href={`${section.href}`} key={key} className="nav_link">
-    //                 {section.name}
-    //               </a>
-    //             </div>
-    //           ))}
-    //         </div>
-    //       </div>
-
-    //       <div className="nav_active_right">
-    //         <div
-    //           className="burger_menu_active"
-    //           onClick={() => set_is_nav_active(!is_nav_active)}
-    //         >
-    //           <img src={`${burger_menu_close_image}`} alt="burger_menu_close" />
-    //         </div>
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
   );
 };

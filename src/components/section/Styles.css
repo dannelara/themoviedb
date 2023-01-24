@@ -1,6 +1,5 @@
 .content_wrapper {
   padding: 2em 0 1em 0;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,22 +7,21 @@
   gap: 2em;
 }
 
-.content_wrapper > div {
+.section_full {
   width: 90%;
-  /* height: auto; */
 }
-
 .content_items {
-  width: 90%;
+  width: calc(90vw - var(--nav-width));
   height: auto;
   display: flex;
   justify-content: center;
-  gap: 1em;
+  flex-wrap: wrap;
+  gap: 2em;
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 950px) {
   .content_items {
-    width: 90% !important;
-    flex-wrap: wrap;
+    width: calc(100vw - var(--nav-width));
+    gap: 1em;
   }
 }

@@ -1,7 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  --query-breakpoint: 950px;
+  --nav-width: 15vw;
   --bg-color-light-dark: #1e1e1e;
+  --bg-color-dark-transparent: rgba(23, 23, 23, 0.63);
   --bg-color-dark: #171717;
   --bg-color-white: #ffffff;
   --bg-color-gradient: linear-gradient(
@@ -11,12 +15,22 @@
   );
 
   /*Cards*/
-  --card-min-width: 386.86px;
-  --card-max-width: 680px;
-  --card-big-min-height: 217.43px;
-  --card-small-min-height: 276.39px;
 
-  --card-max-height: 382.18px;
+  --card-big-max-height: 300px;
+  --card-big-max-width: 680px;
+
+  --card-small-max-height: 382.74px;
+  --card-small-max-width: 250px;
+  --card-small-min-width: 120px;
+
+  --card-small-min-height: 270px;
+  /* --card-min-width: 386.86px; */
+  /* --card-big-max-width: 680px;
+
+  --card-big-min-height: 217.43px;
+
+  --card-small-min-height: 276.39px;
+  --card-max-height: 300px; */
 
   /*
   Text.  
@@ -28,9 +42,11 @@
   --font-weight-700: 700;
 
   --text-color-default: #ffffff;
-  --text-font-size: 24px;
+
+  --text-font-size: 15px;
   --font-size-xsmall: 16px;
   --font-size-small: 20px;
+
   --text-line-height: 29px;
 
   --border-radius-small: 100px;

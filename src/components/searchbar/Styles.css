@@ -36,7 +36,7 @@
   margin: auto 0;
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 950px) {
   .search_bar_wrapper {
     padding-top: 0;
     display: flex;

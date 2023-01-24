@@ -5,7 +5,7 @@
   background-color: var(--bg-color-light-dark);
 }
 
-@media screen and (min-width: 424px) {
+@media screen and (min-width: 950px) {
   .wrapper_flex {
     display: flex;
     /* height: 100%;

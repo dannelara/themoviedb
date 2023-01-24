@@ -21,15 +21,17 @@ div[toggle="true"] {
 }
 
 .nav {
-  width: 278px;
-  background-color: transparent;
+  width: var(--nav-width);
+
   background-color: var(--bg-color-dark);
   display: flex;
   align-items: center;
   box-shadow: var(--box-shadow-right);
+  position: relative;
 }
 
 .title_wrapper {
+  padding-top: 2em;
   height: fit-content;
   width: 100%;
   display: flex;
@@ -43,13 +45,20 @@ div[toggle="true"] {
   height: 90%;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  max-height: 100vh;
 }
 
 .burger_menu {
   display: none;
 }
 
+.burger_menu > img {
+  max-height: 20px;
+}
 .nav_items {
   display: flex !important;
   justify-content: center;
@@ -74,23 +83,28 @@ div[toggle="true"] {
   line-height: 29px;
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 950px) {
   .nav {
     background-color: transparent;
     width: 100%;
     padding: 1em 0 1em 0;
     display: flex;
     align-items: center;
+    position: static;
     justify-content: center;
   }
+
   .title_wrapper {
     width: fit-content;
+    padding-top: 0;
   }
   .nav_content {
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: static;
+    top: 0;
   }
 
   .burger_menu {
@@ -99,6 +113,7 @@ div[toggle="true"] {
   }
 
   .nav_items_big {
+    background: var(--bg-color-dark-transparent);
     display: none;
     position: absolute;
     z-index: 1;
@@ -116,7 +131,7 @@ div[toggle="true"] {
     height: 100%;
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     background-color: var(--bg-color-dark);
     box-shadow: var(--box-shadow-right);
   }
@@ -126,7 +141,10 @@ div[toggle="true"] {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+  }
+  .nav_links_container > div {
+    padding-top: 5em;
   }
 
   .nav_active_right {
@@ -139,5 +157,9 @@ div[toggle="true"] {
     cursor: pointer;
     margin: 0 auto;
     padding: 1em;
+  }
+
+  .burger_menu_active > img {
+    max-height: 20px;
   }
 }

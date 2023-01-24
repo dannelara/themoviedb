@@ -8,7 +8,7 @@ interface SectionProps {
 export const Section: React.FC<SectionProps> = ({ title, children }) => {
   return (
     <div className="content_wrapper">
-      <div>
+      <div className="section_full">
         <span className="text_big">{title}</span>
       </div>
 
