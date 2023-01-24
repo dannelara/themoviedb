@@ -11,7 +11,6 @@ export const Section: React.FC<SectionProps> = ({ title, children }) => {
       <div className="section_full">
         <span className="text_big">{title}</span>
       </div>
-
       <div className="content_items">{children}</div>
     </div>
   );
