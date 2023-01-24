@@ -20,6 +20,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ big, movie }) => {
     <div className={big ? "card_big" : "card_small"} id={`${movie.id}`}>
       <Link
         to={`/movie?id=${movie.id}&name=${movie.title}`}
+        className="cover_link"
         onClick={setCurrentMovieInView}
       >
         <img
@@ -27,14 +28,17 @@ export const MovieCard: React.FC<MovieCardProps> = ({ big, movie }) => {
           className="cover_image"
           alt="poster"
         />
-        {big && (
-          <div className="card_description">
-            <div>
-              <span className="text_small">{movie.title}</span>
-              <span className="text_xsmall">{movie.release_date}</span>
-            </div>
+
+        <div
+          className={`flex_center card_description${big ? "" : "_" + "big"}`}
+        >
+          <div className="info_container">
+            <span className="text_small">{movie.title}</span>
+            <span className="text_xsmall">{`${new Date(
+              `${movie.release_date}`
+            ).getFullYear()}`}</span>
           </div>
-        )}
+        </div>
       </Link>
     </div>
   );

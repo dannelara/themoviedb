@@ -3,7 +3,7 @@ import "./Styles.css";
 import burger_menu_open_image from "assets/images/MenuIcon.png";
 import burger_menu_close_image from "assets/images/Union.png";
 import sections from "assets/data/sections";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export const Nav: React.FC = ({}) => {
   const [is_nav_active, set_is_nav_active] = useState(false);
 
@@ -18,9 +18,13 @@ export const Nav: React.FC = ({}) => {
 
   return (
     <div className="nav">
-      <div className="nav_content">
-        <div className="title_wrapper">
-          <h1 className="text_big">Movies</h1>
+      <div className="flex_center nav_content">
+        <div className="flex_center title_wrapper">
+          <h1 className="text_big">
+            <Link className="cover_link" to={"/"}>
+              Movies
+            </Link>
+          </h1>
         </div>
 
         {!is_nav_active && (
@@ -34,16 +38,20 @@ export const Nav: React.FC = ({}) => {
             <div className="nav_links_container">
               <div>
                 {sections.map((section, key) => (
-                  <div className="nav_link_wrapper" key={key}>
-                    <img src={`${section.icon_path}`} alt="link icon" />
-                    <Link
+                  <div className="flex_center nav_link_wrapper" key={key}>
+                    <NavLink
                       to={`${section.href}`}
                       key={key}
-                      className="nav_link"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "nav_link flex_center active"
+                          : "nav_link flex_center inactive"
+                      }
                       onClick={activate_nav}
                     >
+                      <img src={`${section.icon_path}`} alt="link icon" />
                       {section.name}
-                    </Link>
+                    </NavLink>
                   </div>
                 ))}
               </div>

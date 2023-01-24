@@ -25,7 +25,8 @@ const GlobalState = ({
   };
 
   const fetch_data = async () => {
-    set_genres(await API.fetch_data(`/genre/movie/list`));
+    API.fetch_data(`/genre/movie/list`, set_genres);
+    // set_genres(await API.fetch_data(`/genre/movie/list`));
   };
 
   useEffect(() => {

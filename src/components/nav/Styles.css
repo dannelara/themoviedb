@@ -16,13 +16,8 @@ Key frames.
   display: none;
 }
 
-div[toggle="true"] {
-  display: flex;
-}
-
 .nav {
   width: var(--nav-width);
-
   background-color: var(--bg-color-dark);
   display: flex;
   align-items: center;
@@ -34,17 +29,13 @@ div[toggle="true"] {
   padding-top: 2em;
   height: fit-content;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   line-height: var(--text-line-height);
 }
 
 .nav_content {
   width: 100%;
   height: 90%;
-  display: flex;
-  justify-content: center;
+
   align-items: flex-start;
   flex-wrap: wrap;
   position: absolute;
@@ -66,24 +57,38 @@ div[toggle="true"] {
 }
 
 .nav_link_wrapper {
-  display: flex;
   justify-content: flex-start;
-  align-items: center;
   padding: 1em;
   gap: 1em;
 }
 
 .nav_link {
   width: fit-content;
+  gap: 1em;
   font-size: var(--text-font-size);
   font-family: var(--font-family);
   font-weight: var(--font-weight-600);
   font-style: normal;
-  color: var(--text-color-default);
+  color: var(--text-color-inactive);
   line-height: 29px;
+}
+.nav_link > img {
+  filter: grayscale(1);
+}
+
+.nav_link.active {
+  color: var(--text-color-white);
+}
+
+.nav_link.active > img {
+  filter: brightness(0) invert(1);
 }
 
 @media screen and (max-width: 950px) {
+  div[toggle] {
+    display: flex;
+    position: fixed;
+  }
   .nav {
     background-color: transparent;
     width: 100%;

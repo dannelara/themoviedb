@@ -22,23 +22,23 @@ export const Home: React.FC<HomeProps> = ({}) => {
 
   const fetchPopularMovies = async () => {
     const sub_url_path = "/trending/movie/day";
-    const data = await API.fetch_data<Movies>(sub_url_path);
+    API.fetch_data<Movies>(sub_url_path, set_trending_movies);
 
-    set_trending_movies(data);
+    // set_trending_movies(data);
   };
 
   const fetchNowPlayingMovies = async () => {
     const sub_url_path = "/movie/now_playing";
-    const data = await API.fetch_data<Movies>(sub_url_path);
+    await API.fetch_data<Movies>(sub_url_path, set_now_playing_movies);
 
-    set_now_playing_movies(data);
+    // set_now_playing_movies(data);
   };
 
   const fetchTopRatedMovies = async () => {
     const sub_url_path = "/movie/top_rated";
-    const data = await API.fetch_data<Movies>(sub_url_path);
+    await API.fetch_data<Movies>(sub_url_path, set_top_rated_movies);
 
-    set_top_rated_movies(data);
+    // set_top_rated_movies(data);
   };
   useEffect(() => {
     fetchPopularMovies();

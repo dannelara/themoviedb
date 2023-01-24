@@ -10,6 +10,7 @@
 .section_full {
   width: 90%;
 }
+
 .content_items {
   width: calc(90vw - var(--nav-width));
   height: auto;

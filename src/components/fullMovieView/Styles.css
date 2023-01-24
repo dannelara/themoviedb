@@ -4,6 +4,6 @@
   overflow-x: hidden;
 }
 
-.movie_container {
-  width: calc(90vw);
+.movie_player_container {
+  width: calc(100vw - var(--nav-width));
 }
