@@ -40,11 +40,11 @@
   --font-weight-700: 700;
 
   --text-color-white: #ffffff;
-  --text-color-inactive: #838383;
-  --text-font-size: 15px;
-  --font-size-xsmall: 16px;
-  --font-size-small: 20px;
+  --color-inactive: #838383;
 
+  --font-size-xsmall: 16px;
+  --font-size-small: 17px;
+  --font-size-big: 20px;
   --text-line-height: 29px;
 
   --border-radius-small: 100px;
@@ -70,7 +70,7 @@
 }
 
 .text_big {
-  font-size: var(--text-font-size);
+  font-size: var(--font-size-big);
   font-family: var(--font-family);
   font-weight: var(--font-weight-600);
   font-style: normal;

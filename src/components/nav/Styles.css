@@ -33,13 +33,14 @@ Key frames.
 }
 
 .nav_content {
-  width: 100%;
-  height: 90%;
+  width: var(--nav-width);
+  height: 100%;
 
   align-items: flex-start;
   flex-wrap: wrap;
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   max-height: 100vh;
 }
 
@@ -69,11 +70,8 @@ Key frames.
   font-family: var(--font-family);
   font-weight: var(--font-weight-600);
   font-style: normal;
-  color: var(--text-color-inactive);
+  color: var(--color-inactive);
   line-height: 29px;
-}
-.nav_link > img {
-  filter: grayscale(1);
 }
 
 .nav_link.active {
@@ -89,6 +87,7 @@ Key frames.
     display: flex;
     position: fixed;
   }
+
   .nav {
     background-color: transparent;
     width: 100%;
