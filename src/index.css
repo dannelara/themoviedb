@@ -80,3 +80,6 @@ a {
   list-style: none;
   text-decoration: none;
 }
+::-webkit-scrollbar {
+  display: none;
+}

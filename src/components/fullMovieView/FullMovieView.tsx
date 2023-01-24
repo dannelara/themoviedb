@@ -3,55 +3,82 @@ import { useLocation } from "react-router-dom";
 import * as API from "fetch/fetch";
 import "./Styles.css";
 import { Section } from "components/section/Section";
-import { MovieCard } from "components/cards/MovieCard";
-function useQuery() {
-  const { search } = useLocation();
+import { ActorCard } from "components/cards";
+import MovieDetails from "interfaces/MovieDetails";
+import { GlobalStateContext } from "global/GlobalState";
 
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+const FullMovieView: React.FC = () => {
+  const { current_moview_in_view } = React.useContext(GlobalStateContext);
 
-export const FullMovieView: React.FC = () => {
-  const [cast, set_cast] = useState([]);
+  const { genres } = React.useContext(GlobalStateContext);
 
-  //   const [data, set_data] = useState({});
-  const movie_id = useQuery().get("id");
+  const [cast, set_cast] = useState<MovieDetails>({
+    cast: [],
+  });
 
-  const data_to_fetch = [
-    {
-      name: "details",
-      path: `
-      /movie/${movie_id}/credits`,
-    },
-    {
-      name: "video",
-      path: `/movie/${movie_id}/videos`,
-    },
-  ];
+  const [movie_genres, set_movie_genres] = useState([]);
+  const [movie_key, set_movie_key] = useState("");
 
   const fetchData = async () => {
-    set_cast(await API.fetch_data(`/movie/${movie_id}/credits`));
-    // data_to_fetch.forEach(async (data) => {
-    //   const data_response = await API.fetch_data(`${data.path}`);
-    //   console.log(data_response);
-    //   set_data({
-    //     ...data,
-    //     data_response,
-    //   });
-    // });
+    if (current_moview_in_view.id) {
+      const test_vieo = await API.fetch_data<any>(
+        `/movie/${current_moview_in_view.id}/videos`
+      );
+
+      set_movie_key(test_vieo.results[test_vieo.results.length - 1].key);
+
+      set_cast(
+        await API.fetch_data<MovieDetails>(
+          `/movie/${current_moview_in_view.id}/credits`
+        )
+      );
+    }
+  };
+
+  const load_genres = () => {
+    return current_moview_in_view.genre_ids.map((id: number) => {
+      return genres.genres.filter((e: any) => e.id === id)[0];
+    });
   };
 
   useEffect(() => {
     fetchData();
-    // console.log(cast);
-    // console.log(data);
-  }, []);
+
+    if (current_moview_in_view && genres) {
+      set_movie_genres(load_genres());
+    }
+  }, [genres]);
+
   return (
     <div className="wrapper">
-      <Section title="Cast">
-        {/* {cast.slice(0, 2).map((movie, key: number) => {
-          return <MovieCard movie={movie} key={key} />;
-        })} */}
+      <Section title="Details">
+        {movie_genres.map((e: any, key: number) => {
+          return (
+            <p className="text_small text_big" key={key}>
+              {e.name}
+            </p>
+          );
+        })}
+      </Section>
+      <Section title="Top 3 actors">
+        {cast.cast.slice(0, 3).map((actor, key: number) => {
+          return <ActorCard data={actor} key={key} />;
+        })}
+      </Section>
+
+      <Section title="Trailer">
+        <div className="movie_container">
+          <iframe
+            id="player"
+            itemType="text/html"
+            width="100%"
+            height="390"
+            src={`https://www.youtube.com/embed/${movie_key}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}
+          ></iframe>
+        </div>
       </Section>
     </div>
   );
 };
+
+export default FullMovieView;

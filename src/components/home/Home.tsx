@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { SearchBar } from "components/searchbar/SearchBar";
 import { Section } from "components/section/Section";
-import { MovieCard } from "components/cards/MovieCard";
+import { MovieCard } from "components/cards";
 import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
 

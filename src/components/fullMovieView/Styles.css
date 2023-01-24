@@ -1,5 +1,9 @@
 .wrapper {
-  height: 100%;
+  height: fit-content;
   flex-grow: 1;
   overflow-x: hidden;
+}
+
+.movie_container {
+  width: calc(90vw);
 }
