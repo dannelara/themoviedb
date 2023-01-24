@@ -17,21 +17,25 @@ const FullMovieView: React.FC = () => {
   });
 
   const [movie_genres, set_movie_genres] = useState([]);
-  const [movie_key, set_movie_key] = useState("");
+  const [movie_key, set_movie_key] = useState<any>();
 
   const fetchData = async () => {
     if (current_moview_in_view.id) {
-      const test_vieo = await API.fetch_data<any>(
-        `/movie/${current_moview_in_view.id}/videos`
+      API.fetch_data<any>(
+        `/movie/${current_moview_in_view.id}/videos`,
+        set_movie_key
       );
 
-      set_movie_key(test_vieo.results[test_vieo.results.length - 1].key);
-
-      set_cast(
-        await API.fetch_data<MovieDetails>(
-          `/movie/${current_moview_in_view.id}/credits`
-        )
+      //   set_movie_key(test_vieo.results[test_vieo.results.length - 1].key);
+      API.fetch_data<MovieDetails>(
+        `/movie/${current_moview_in_view.id}/credits`,
+        set_cast
       );
+      //   set_cast(
+      //     await API.fetch_data<MovieDetails>(
+      //       `/movie/${current_moview_in_view.id}/credits`,set_cast
+      //     )
+      //   );
     }
   };
 
@@ -47,34 +51,40 @@ const FullMovieView: React.FC = () => {
     if (current_moview_in_view && genres) {
       set_movie_genres(load_genres());
     }
+
+    // console.log(movie_key.results[movie_key.results.length - 1]);
   }, [genres]);
 
   return (
     <div className="wrapper">
-      <Section title="Details">
+      <Section title="Genres">
         {movie_genres.map((e: any, key: number) => {
           return (
-            <p className="text_small text_big" key={key}>
+            <p className="text_xsmall text_big" key={key}>
               {e.name}
             </p>
           );
         })}
       </Section>
-      <Section title="Top 3 actors">
-        {cast.cast.slice(0, 3).map((actor, key: number) => {
+      <Section title="Actors">
+        {cast.cast.slice(0, 4).map((actor, key: number) => {
           return <ActorCard data={actor} key={key} />;
         })}
       </Section>
 
       <Section title="Trailer">
-        <div className="movie_container">
-          <iframe
-            id="player"
-            itemType="text/html"
-            width="100%"
-            height="390"
-            src={`https://www.youtube.com/embed/${movie_key}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}
-          ></iframe>
+        <div className="movie_player_container">
+          {movie_key && (
+            <iframe
+              id="player"
+              itemType="text/html"
+              width="100%"
+              height="390"
+              src={`https://www.youtube.com/embed/${
+                movie_key.results[movie_key.results.length - 1].key
+              }?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}
+            ></iframe>
+          )}
         </div>
       </Section>
     </div>
