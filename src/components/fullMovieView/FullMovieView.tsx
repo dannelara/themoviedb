@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+
 import * as API from "fetch/fetch";
 import "./Styles.css";
-import { Section } from "components/section/Section";
-import { ActorCard } from "components/cards";
+import { Section } from "utils/section/Section";
+import { ActorCard } from "utils/cards";
 import MovieDetails from "interfaces/MovieDetails";
 import { GlobalStateContext } from "global/GlobalState";
 

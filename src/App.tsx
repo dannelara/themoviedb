@@ -1,37 +1,28 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import { Main, Nav, SearchBar, Home } from "./components";
-// import GlobalState from "global/GlobalState";
-// import { Home } from "components/home/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Main, Nav, SearchBar, Home, FullMovieView } from "components";
+import GlobalState from "global/GlobalState";
 
-// const FullMovieView = React.lazy(
-//   () => import("components/fullMovieView/FullMovieView")
-// );
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="wrapper_flex">
-      {/* <GlobalState> */}
-      <BrowserRouter>
-        <Nav />
+      <GlobalState>
+        <BrowserRouter>
+          <Nav />
 
-        <Main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route
-                path="/movie"
-                element={
-                  // Make a custom loading component.
-                  <Suspense fallback={<div>Loading</div>}>
-                    <FullMovieView />
-                  </Suspense>
-                }
-              /> */}
-          </Routes>
-        </Main>
-      </BrowserRouter>
-      {/* </GlobalState> */}
+          <Main>
+            <Suspense fallback={<div>Loading</div>}>
+              {" // Make a custom loading component."}
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/movie" element={<FullMovieView />} />
+              </Routes>
+            </Suspense>
+          </Main>
+        </BrowserRouter>
+      </GlobalState>
     </div>
   );
 }

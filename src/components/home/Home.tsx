@@ -8,7 +8,7 @@ import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
 interface HomeProps {}
 
-export const Home: React.FC<HomeProps> = ({}) => {
+const Home: React.FC<HomeProps> = ({}) => {
   const [trending_movies, set_trending_movies] = useState<Movies>({
     results: [],
   });
@@ -65,3 +65,5 @@ export const Home: React.FC<HomeProps> = ({}) => {
     </div>
   );
 };
+
+export default Home;
