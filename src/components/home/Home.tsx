@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import { SearchBar } from "components/searchbar/SearchBar";
-import { Section } from "components/section/Section";
-import { MovieCard } from "components/cards";
+import { Section } from "utils/section/Section";
+import { MovieCard } from "utils/cards";
 import * as API from "fetch/fetch";
+// import Movies from "interfaces/Movie";
 import Movies from "interfaces/Movie";
-
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
