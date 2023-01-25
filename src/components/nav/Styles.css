@@ -17,7 +17,7 @@ Key frames.
 }
 
 .nav {
-  width: var(--nav-width);
+  min-width: var(--nav-width);
   background-color: var(--bg-color-dark);
   display: flex;
   align-items: center;

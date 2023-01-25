@@ -40,6 +40,7 @@
   --font-weight-700: 700;
 
   --text-color-white: #ffffff;
+  --text-color-dark: #1a1a1a;
   --color-inactive: #838383;
 
   --font-size-xsmall: 16px;
@@ -63,10 +64,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2em;
 }
 
 .wrap {
   flex-wrap: wrap;
+}
+.container_full {
+  height: 100%;
+  flex-grow: 1;
 }
 
 .text_big {
@@ -89,7 +95,7 @@ a {
   color: var(--text-color-white);
 }
 
-p {
+.default_color {
   color: var(--text-color-white);
 }
 

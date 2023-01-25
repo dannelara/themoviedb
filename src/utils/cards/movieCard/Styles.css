@@ -2,12 +2,10 @@
   flex-grow: 1;
   max-width: var(--card-big-max-width);
   max-height: var(--card-big-max-height);
-  min-height: var(--card-big-min-height);
 }
 
 .card_small {
   min-width: var(--card-small-min-width);
-  min-height: var(--card-small-min-height);
   max-width: var(--card-small-max-width);
   max-height: var(--card-small-max-height);
 }
@@ -30,6 +28,8 @@
   height: 100%;
   bottom: 0;
   background: var(--bg-color-dark-gradient-full);
+  border: 1px solid var(--text-color-white);
+  border-radius: 10px;
 }
 
 .info_container {
@@ -92,7 +92,6 @@
 @media screen and (max-width: 650px) {
   .card_small {
     width: calc((100% / 2) - 2em);
-
     border-radius: 5px;
   }
 }

@@ -8,4 +8,5 @@ export type Actor = {
 
 export default interface MovieDetails {
   cast: Actor[];
+  video_key: "";
 }

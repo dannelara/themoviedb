@@ -17,20 +17,23 @@ const GlobalState = ({
   const [current_moview_in_view, set_current_moview_in_view] =
     useState<Movie>(currentStoredMoview);
 
-  const [genres, set_genres] = useState();
+  const [genres, set_genres] = useState({ genres: [] });
 
   const saveToLocalStorage = (movie: Movie) => {
     set_current_moview_in_view(movie);
     localStorage.setItem("movie_in_view", JSON.stringify(movie));
   };
 
-  const fetch_data = async () => {
-    set_genres(await API.fetch_data(`/genre/movie/list`));
-    // set_genres(await API.fetch_data(`/genre/movie/list`));
-  };
+  // const fetch_data = async () => {
+  //   set_genres(await API.fetch_data(`/genre/movie/list`));
+  // };
 
   useEffect(() => {
-    fetch_data();
+    // fetch_data();
+
+    (async () => {
+      set_genres(await API.fetch_data(`/genre/movie/list`));
+    })();
   }, []);
 
   const state = {
