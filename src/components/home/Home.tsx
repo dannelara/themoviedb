@@ -53,6 +53,12 @@ const Home: React.FC = ({}) => {
 
   useEffect(() => {
     fetchData();
+    // Reset incase we got an error when the page was loading so that it wont cause issues
+    // inside of other components.
+    return () => {
+      set_error(false);
+      set_error_message("");
+    };
   }, []);
 
   if (is_loading) {

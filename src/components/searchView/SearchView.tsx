@@ -6,7 +6,7 @@ import * as API from "fetch/fetch";
 import { Section } from "components/section/Section";
 import { MovieCard } from "utils/cards";
 
-export const Search: React.FC = ({}) => {
+export const SearchView: React.FC = ({}) => {
   const {
     search_query,
     set_search_query,
@@ -27,10 +27,9 @@ export const Search: React.FC = ({}) => {
       if (search_query) {
         const data = await API.fetch_data<Movies>(
           "/search/movie",
-          `?query=${"spiderman"}`
+          `&query=${search_query}`
         );
 
-        console.log(data);
         set_data((prevState) => ({
           ...prevState,
           results: data.results,
@@ -44,11 +43,11 @@ export const Search: React.FC = ({}) => {
   // console.log(data);
   return (
     <div className="content_wrapper flex_center">
-      {/* <Section title="Search">
+      <Section title="Search">
         {data.results.map((movie, key: number) => {
           return <MovieCard movie={movie} key={key} />;
         })}
-      </Section> */}
+      </Section>
     </div>
   );
 };

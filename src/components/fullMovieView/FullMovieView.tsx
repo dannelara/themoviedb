@@ -61,6 +61,13 @@ const FullMovieView: React.FC = () => {
   useEffect(() => {
     fetchData();
     load_genres();
+
+    // Reset incase we got an error when the page was loading so that it wont cause issues
+    // inside of other components.
+    return () => {
+      set_error(false);
+      set_error_message("");
+    };
   }, [genres]);
 
   if (is_loading) {
