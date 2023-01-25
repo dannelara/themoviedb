@@ -1,53 +1,50 @@
 import React, { useEffect, useState } from "react";
 
-import { SearchBar } from "components/searchbar/SearchBar";
 import { Section } from "utils/section/Section";
 import { MovieCard } from "utils/cards";
 import * as API from "fetch/fetch";
-// import Movies from "interfaces/Movie";
+
 import Movies from "interfaces/Movie";
-interface HomeProps {}
 
-const Home: React.FC<HomeProps> = ({}) => {
-  const [trending_movies, set_trending_movies] = useState<Movies>({
-    results: [],
-  });
+const Home: React.FC = ({}) => {
+  const [data, set_data] = useState({});
 
-  const [now_playing_movies, set_now_playing_movies] = useState<Movies>({
-    results: [],
-  });
-  const [top_rated_movies, set_top_rated_movies] = useState<Movies>({
-    results: [],
-  });
+  // const [trending_movies, set_trending_movies] = useState<Movies>({
+  //   results: [],
+  // });
 
-  const fetchPopularMovies = async () => {
-    const sub_url_path = "/trending/movie/day";
-    API.fetch_data<Movies>(sub_url_path, set_trending_movies);
+  // const [now_playing_movies, set_now_playing_movies] = useState<Movies>({
+  //   results: [],
+  // });
 
-    // set_trending_movies(data);
+  // const [top_rated_movies, set_top_rated_movies] = useState<Movies>({
+  //   results: [],
+  // });
+
+  const fetchData = async () => {
+    try {
+      set_data((prevState) => ({
+        ...prevState,
+        ["trending_movies"]: API.fetch_data<Movies>("/trending/movie/day"),
+        ["now_playing_movies"]: API.fetch_data<Movies>("/movie/now_playing"),
+        ["top_rated_movies"]: API.fetch_data<Movies>("/movie/top_rated"),
+      }));
+
+      // await API.fetch_data<Movies>("/trending/movie/day", set_trending_movies);
+      // await API.fetch_data<Movies>("/movie/now_playing");
+      // await API.fetch_data<Movies>("/movie/top_rated", set_top_rated_movies);
+    } catch (error) {}
   };
 
-  const fetchNowPlayingMovies = async () => {
-    const sub_url_path = "/movie/now_playing";
-    await API.fetch_data<Movies>(sub_url_path, set_now_playing_movies);
-
-    // set_now_playing_movies(data);
-  };
-
-  const fetchTopRatedMovies = async () => {
-    const sub_url_path = "/movie/top_rated";
-    await API.fetch_data<Movies>(sub_url_path, set_top_rated_movies);
-
-    // set_top_rated_movies(data);
-  };
   useEffect(() => {
-    fetchPopularMovies();
-    fetchNowPlayingMovies();
-    fetchTopRatedMovies();
+    fetchData();
+    console.log(data);
+    // console.log(Object.keys(data));
   }, []);
+
   return (
     <div>
-      <Section title="Trending">
+      {/* <Section title="Trending">
         {trending_movies.results.slice(0, 2).map((movie, key: number) => {
           return <MovieCard big movie={movie} key={key} />;
         })}
@@ -61,7 +58,7 @@ const Home: React.FC<HomeProps> = ({}) => {
         {top_rated_movies.results.slice(0, 5).map((movie, key: number) => {
           return <MovieCard movie={movie} key={key} />;
         })}
-      </Section>
+      </Section> */}
     </div>
   );
 };

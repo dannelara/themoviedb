@@ -10,7 +10,7 @@ const sections: SectionHref[] = [
   },
   {
     name: "Discover",
-    href: "/discovery",
+    href: "/discover",
     icon_path: discover_icon,
   },
 ];

@@ -20,23 +20,16 @@ const FullMovieView: React.FC = () => {
   const [movie_key, set_movie_key] = useState<any>();
 
   const fetchData = async () => {
-    if (current_moview_in_view.id) {
-      API.fetch_data<any>(
-        `/movie/${current_moview_in_view.id}/videos`,
-        set_movie_key
-      );
-
-      //   set_movie_key(test_vieo.results[test_vieo.results.length - 1].key);
-      API.fetch_data<MovieDetails>(
-        `/movie/${current_moview_in_view.id}/credits`,
-        set_cast
-      );
-      //   set_cast(
-      //     await API.fetch_data<MovieDetails>(
-      //       `/movie/${current_moview_in_view.id}/credits`,set_cast
-      //     )
+    try {
+      //   await API.fetch_data<any>(
+      //     `/movie/${current_moview_in_view.id}/videos`,
+      //     set_movie_key
       //   );
-    }
+      //   await API.fetch_data<MovieDetails>(
+      //     `/movie/${current_moview_in_view.id}/credits`,
+      //     set_cast
+      //   );
+    } catch (error) {}
   };
 
   const load_genres = () => {

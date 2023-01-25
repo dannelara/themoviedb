@@ -25,7 +25,7 @@ const GlobalState = ({
   };
 
   const fetch_data = async () => {
-    API.fetch_data(`/genre/movie/list`, set_genres);
+    set_genres(await API.fetch_data(`/genre/movie/list`));
     // set_genres(await API.fetch_data(`/genre/movie/list`));
   };
 
