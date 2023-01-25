@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import * as API from "fetch/fetch";
 import "./Styles.css";
-import { Section } from "utils/section/Section";
+import { Section } from "components/section/Section";
 import { ActorCard } from "utils/cards";
 import MovieDetails, { Actor } from "interfaces/MovieDetails";
 import { GlobalStateContext } from "global/GlobalState";
+import { Loader } from "utils/loader/Loader";
+import { ErrorPage } from "components/errorPage/ErrorPage";
 
 const FullMovieView: React.FC = () => {
-  const { current_moview_in_view, genres } =
-    React.useContext(GlobalStateContext);
-  const [error, set_error] = useState(false);
-  const [error_message, set_error_message] = useState("");
+  const {
+    current_moview_in_view,
+    genres,
+    is_loading,
+    set_is_loading,
+    error,
+    set_error,
+    error_message,
+    set_error_message,
+  } = React.useContext(GlobalStateContext);
 
   const [data, set_data] = useState<MovieDetails>({
     cast: [],
@@ -35,29 +43,39 @@ const FullMovieView: React.FC = () => {
         video_key:
           video_key_response.results[video_key_response.results.length - 1].key,
       }));
-    } catch (error) {}
+      set_is_loading(false);
+    } catch (error) {
+      set_error(true);
+      set_error_message("An error has occured. Try again.");
+    }
   };
 
   const load_genres = () => {
-    return current_moview_in_view.genre_ids.map((id: number) => {
-      return genres.genres.filter((e: any) => e.id === id)[0];
-    });
+    set_movie_genres(
+      current_moview_in_view.genre_ids.map((id: number) => {
+        return genres.genres.filter((e: any) => e.id === id)[0];
+      })
+    );
   };
 
   useEffect(() => {
     fetchData();
-
-    if (current_moview_in_view && genres) {
-      set_movie_genres(load_genres());
-    }
+    load_genres();
   }, [genres]);
+
+  if (is_loading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <ErrorPage error_message={error_message} />;
+  }
 
   return (
     <div className="wrapper">
       <Section title="Genres">
         {movie_genres.map((e: any, key: number) => {
           return (
-            <p className="text_xsmall text_big default_color" key={key}>
+            <p className="text_xsmall text_big default_color " key={key}>
               {e.name}
             </p>
           );

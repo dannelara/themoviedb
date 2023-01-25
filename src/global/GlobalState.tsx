@@ -18,19 +18,16 @@ const GlobalState = ({
     useState<Movie>(currentStoredMoview);
 
   const [genres, set_genres] = useState({ genres: [] });
+  const [is_loading, set_is_loading] = useState(true);
+  const [error, set_error] = useState(false);
+  const [error_message, set_error_message] = useState("");
 
   const saveToLocalStorage = (movie: Movie) => {
     set_current_moview_in_view(movie);
     localStorage.setItem("movie_in_view", JSON.stringify(movie));
   };
 
-  // const fetch_data = async () => {
-  //   set_genres(await API.fetch_data(`/genre/movie/list`));
-  // };
-
   useEffect(() => {
-    // fetch_data();
-
     (async () => {
       set_genres(await API.fetch_data(`/genre/movie/list`));
     })();
@@ -42,6 +39,12 @@ const GlobalState = ({
     set_search_query,
     current_moview_in_view,
     saveToLocalStorage,
+    is_loading,
+    set_is_loading,
+    error,
+    set_error,
+    error_message,
+    set_error_message,
   };
 
   return (
