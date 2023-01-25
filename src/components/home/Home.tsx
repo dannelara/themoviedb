@@ -80,6 +80,7 @@ const Home: React.FC = ({}) => {
         {data.now_playing_movies.results
           .slice(0, 5)
           .map((movie, key: number) => {
+            // Fixa så att filmer utan specifik inte används.
             return <MovieCard movie={movie} key={key} />;
           })}
       </Section>

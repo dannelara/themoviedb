@@ -3,6 +3,7 @@ import "./Styles.css";
 import { Movie } from "interfaces/Movie";
 import { Link } from "react-router-dom";
 import { GlobalStateContext } from "global/GlobalState";
+import no_image_found from "assets/images/no_image_found.png";
 
 interface MovieCardProps {
   big?: boolean;
@@ -24,7 +25,11 @@ export const MovieCard: React.FC<MovieCardProps> = ({ big, movie }) => {
         onClick={setCurrentMovieInView}
       >
         <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : no_image_found
+          }
           className="cover_image"
           alt="poster"
         />
