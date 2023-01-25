@@ -41,7 +41,7 @@
 
   --text-color-white: #ffffff;
   --text-color-dark: #1a1a1a;
-  --color-inactive: #838383;
+  --color-gray: #838383;
 
   --font-size-xsmall: 16px;
   --font-size-small: 17px;
@@ -70,6 +70,7 @@
 .wrap {
   flex-wrap: wrap;
 }
+
 .container_full {
   height: 100%;
   flex-grow: 1;
@@ -99,6 +100,9 @@ a {
   color: var(--text-color-white);
 }
 
+.gray_color {
+  color: var(--color-gray);
+}
 span {
   color: var(--text-color-white);
 }

@@ -1,0 +1,12 @@
+.footer {
+  height: 10em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer > span {
+  width: 90%;
+  text-align: center;
+}

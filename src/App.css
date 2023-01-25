@@ -8,7 +8,5 @@
 @media screen and (min-width: 950px) {
   .wrapper_flex {
     display: flex;
-    /* height: 100%;
-    width: 278px; */
   }
 }

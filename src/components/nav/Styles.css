@@ -70,7 +70,7 @@ Key frames.
   font-family: var(--font-family);
   font-weight: var(--font-weight-600);
   font-style: normal;
-  color: var(--color-inactive);
+  color: var(--color-gray);
   line-height: 29px;
 }
 

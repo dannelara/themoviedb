@@ -2,12 +2,14 @@
   flex-grow: 1;
   max-width: var(--card-big-max-width);
   max-height: var(--card-big-max-height);
+  border-radius: 10px;
 }
 
 .card_small {
-  min-width: var(--card-small-min-width);
+  min-width: var(--card-small-max-width);
   max-width: var(--card-small-max-width);
   max-height: var(--card-small-max-height);
+  border-radius: 5px;
 }
 
 .card_big,
@@ -15,7 +17,6 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 10px;
 }
 
 .card_description_big {
@@ -40,6 +41,7 @@
 .cover_link {
   color: var(--text-color-white);
   display: block;
+  height: 100%;
 }
 
 .cover_link:hover > .card_description_big {
@@ -91,7 +93,7 @@
 
 @media screen and (max-width: 650px) {
   .card_small {
+    min-width: var(--card-small-min-width);
     width: calc((100% / 2) - 2em);
-    border-radius: 5px;
   }
 }

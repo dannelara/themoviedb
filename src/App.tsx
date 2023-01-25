@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Main, Nav, SearchBar, CustumRouter } from "components";
+import { Main, Nav, SearchBar, CustumRouter, Footer } from "components";
 import GlobalState from "global/GlobalState";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <Nav />
           <Main>
             <CustumRouter />
+            <Footer />
           </Main>
         </BrowserRouter>
       </GlobalState>

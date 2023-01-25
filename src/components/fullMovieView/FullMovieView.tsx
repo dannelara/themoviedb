@@ -41,8 +41,10 @@ const FullMovieView: React.FC = () => {
         ...prevState,
         cast: cast.cast,
         video_key:
-          video_key_response.results[video_key_response.results.length - 1].key,
+          video_key_response.results[video_key_response.results.length - 1]
+            ?.key || "",
       }));
+
       set_is_loading(false);
     } catch (error) {
       set_error(true);
@@ -88,13 +90,19 @@ const FullMovieView: React.FC = () => {
           );
         })}
       </Section>
+
+      <Section title="Overview">
+        <div className="flex_center">
+          <span className="">{current_moview_in_view.overview}</span>
+        </div>
+      </Section>
       <Section title="Actors">
         {data.cast.slice(0, 4).map((actor, key: number) => {
           return <ActorCard data={actor} key={key} />;
         })}
       </Section>
 
-      <Section title="Trailer">
+      <Section title="">
         <div className="movie_player_container">
           {data.video_key && (
             <iframe
