@@ -3,7 +3,7 @@
     "baseUrl": "src",
     "paths": {
       "components": ["components/"],
-      "utils": ["utilsComponents/"],
+      "utils": ["utils/"],
       "interfaces/*": ["interfaces/*"]
     },
     "target": "es5",
