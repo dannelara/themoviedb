@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { GlobalStateContext } from "global/GlobalState";
 import seach_icon from "assets/images/SearchIcon.png";
 import "./Styles.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchBar: React.FC = ({}) => {
-  const [active, set_active] = useState(false);
-  const { search_query, set_search_query } =
-    React.useContext(GlobalStateContext);
+  const { setSearchquery } = React.useContext(GlobalStateContext);
 
   const navigate = useNavigate();
 
@@ -20,7 +18,7 @@ export const SearchBar: React.FC = ({}) => {
           required
           placeholder="Search movie titles"
           className="search_bar_input"
-          onChange={(e) => set_search_query(e.currentTarget.value)}
+          onChange={(e) => setSearchquery(e.currentTarget.value)}
         />
       </div>
     </div>

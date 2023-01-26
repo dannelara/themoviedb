@@ -1,6 +1,6 @@
 .card_big {
   flex-grow: 1;
-  max-width: var(--card-big-max-width);
+  max-width: 50%;
   max-height: var(--card-big-max-height);
   border-radius: 10px;
 }
@@ -42,6 +42,7 @@
   color: var(--text-color-white);
   display: block;
   height: 100%;
+  border-radius: 5px;
 }
 
 .cover_link:hover > .card_description_big {
@@ -84,10 +85,9 @@
   font-weight: var(--font-weight-500);
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1300px) {
   .card_big {
-    width: 100%;
-    min-width: 100%;
+    max-width: 100%;
   }
 }
 

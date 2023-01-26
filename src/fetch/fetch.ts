@@ -12,6 +12,12 @@ export const fetch_data = async <T>(
     }
   );
 
+  if (!response.ok) {
+    throw new Error("Bad request", {
+      cause: response,
+    });
+  }
+
   const data = await response.json();
   return data;
 };

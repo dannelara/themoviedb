@@ -10,14 +10,14 @@ import { ErrorPage } from "components/errorPage/ErrorPage";
 
 const FullMovieView: React.FC = () => {
   const {
-    current_moview_in_view,
+    currentMoviewInView,
     genres,
-    is_loading,
-    set_is_loading,
+    isLoading,
+    setIsLoading,
     error,
-    set_error,
+    setError,
     error_message,
-    set_error_message,
+    setErrorMessage,
   } = React.useContext(GlobalStateContext);
 
   const [data, set_data] = useState<MovieDetails>({
@@ -30,12 +30,12 @@ const FullMovieView: React.FC = () => {
   const fetchData = async () => {
     try {
       const cast = await API.fetch_data<{ cast: Actor[] }>(
-        `/movie/${current_moview_in_view.id}/credits`
+        `/movie/${currentMoviewInView.id}/credits`
       );
 
       const video_key_response = await API.fetch_data<{
         results: [{ key: any }];
-      }>(`/movie/${current_moview_in_view.id}/videos`);
+      }>(`/movie/${currentMoviewInView.id}/videos`);
 
       set_data((prevState) => ({
         ...prevState,
@@ -45,16 +45,16 @@ const FullMovieView: React.FC = () => {
             ?.key || "",
       }));
 
-      set_is_loading(false);
+      setIsLoading(false);
     } catch (error) {
-      set_error(true);
-      set_error_message("An error has occured. Try again.");
+      setError(true);
+      setErrorMessage("An error has occured. Try again.");
     }
   };
 
   const load_genres = () => {
     set_movie_genres(
-      current_moview_in_view.genre_ids.map((id: number) => {
+      currentMoviewInView.genre_ids.map((id: number) => {
         return genres.genres.filter((e: any) => e.id === id)[0];
       })
     );
@@ -67,12 +67,12 @@ const FullMovieView: React.FC = () => {
     // Reset incase we got an error when the page was loading so that it wont cause issues
     // inside of other components.
     return () => {
-      set_error(false);
-      set_error_message("");
+      setError(false);
+      setErrorMessage("");
     };
   }, [genres]);
 
-  if (is_loading) {
+  if (isLoading) {
     return <Loader />;
   }
   if (error) {
@@ -93,13 +93,15 @@ const FullMovieView: React.FC = () => {
 
       <Section title="Overview">
         <div className="flex_center">
-          <span className="">{current_moview_in_view.overview}</span>
+          <span>{currentMoviewInView.overview}</span>
         </div>
       </Section>
       <Section title="Actors">
-        {data.cast.slice(0, 4).map((actor, key: number) => {
-          return <ActorCard data={actor} key={key} />;
-        })}
+        <div className="flex_container_scroll">
+          {data.cast.map((actor, key: number) => {
+            return <ActorCard data={actor} key={key} />;
+          })}
+        </div>
       </Section>
 
       <Section title="">

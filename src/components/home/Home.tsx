@@ -15,12 +15,12 @@ interface Data {
 
 const Home: React.FC = ({}) => {
   const {
-    is_loading,
-    set_is_loading,
+    isLoading,
+    setIsLoading,
     error,
-    set_error,
-    error_message,
-    set_error_message,
+    setError,
+    errorMessage,
+    setErrorMessage,
   } = React.useContext(GlobalStateContext);
 
   const [data, set_data] = useState<Data>({
@@ -30,7 +30,7 @@ const Home: React.FC = ({}) => {
   });
 
   const fetchData = async () => {
-    set_is_loading(true);
+    setIsLoading(true);
 
     try {
       const trending = await API.fetch_data<Movies>("/trending/movie/day");
@@ -44,10 +44,10 @@ const Home: React.FC = ({}) => {
         top_rated_movies: top_rated,
       }));
 
-      set_is_loading(false);
+      setIsLoading(false);
     } catch (error: any) {
-      set_error(true);
-      set_error_message("An error has occured. Try again.");
+      setError(true);
+      setErrorMessage("An error has occured. Try again.");
     }
   };
 
@@ -56,19 +56,18 @@ const Home: React.FC = ({}) => {
     // Reset incase we got an error when the page was loading so that it wont cause issues
     // inside of other components.
     return () => {
-      set_error(false);
-      set_error_message("");
+      setError(false);
+      setErrorMessage("");
     };
   }, []);
 
-  if (is_loading) {
+  if (error) {
+    return <ErrorPage error_message={errorMessage} />;
+  }
+
+  if (isLoading) {
     return <Loader />;
   }
-
-  if (error) {
-    return <ErrorPage error_message={error_message} />;
-  }
-
   return (
     <div>
       <Section title="Trending">
@@ -76,16 +75,14 @@ const Home: React.FC = ({}) => {
           return <MovieCard big movie={movie} key={key} />;
         })}
       </Section>
-      <Section title="Now playing">
-        {data.now_playing_movies.results
-          .slice(0, 5)
-          .map((movie, key: number) => {
-            // Fixa så att filmer utan specifik inte används.
-            return <MovieCard movie={movie} key={key} />;
-          })}
+      <Section title="Now playing" wrap>
+        {data.now_playing_movies.results.map((movie, key: number) => {
+          // Fixa så att filmer utan specifik inte används.
+          return <MovieCard movie={movie} key={key} />;
+        })}
       </Section>
-      <Section title="Top rated">
-        {data.top_rated_movies.results.slice(0, 5).map((movie, key: number) => {
+      <Section title="Top rated" wrap>
+        {data.top_rated_movies.results.map((movie, key: number) => {
           return <MovieCard movie={movie} key={key} />;
         })}
       </Section>

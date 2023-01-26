@@ -5,12 +5,12 @@ import burger_menu_close_image from "assets/images/Union.png";
 import sections from "assets/data/sections";
 import { Link, NavLink } from "react-router-dom";
 export const Nav: React.FC = ({}) => {
-  const [is_nav_active, set_is_nav_active] = useState(false);
+  const [isNavActive, setIsNavActive] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
   const activate_nav = () => {
-    set_is_nav_active(!is_nav_active);
+    setIsNavActive(!isNavActive);
     menuRef.current?.getAttribute("toggle")
       ? menuRef.current?.removeAttribute("toggle")
       : menuRef.current?.setAttribute("toggle", "true");
@@ -27,7 +27,7 @@ export const Nav: React.FC = ({}) => {
           </h1>
         </div>
 
-        {!is_nav_active && (
+        {!isNavActive && (
           <div className="burger_menu" onClick={activate_nav}>
             <img src={`${burger_menu_open_image}`} alt="burger_menu_open" />
           </div>
@@ -58,7 +58,7 @@ export const Nav: React.FC = ({}) => {
             </div>
           </div>
 
-          {is_nav_active && (
+          {isNavActive && (
             <div className="nav_active_right">
               <div className="burger_menu_active" onClick={activate_nav}>
                 <img

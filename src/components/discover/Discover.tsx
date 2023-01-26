@@ -8,67 +8,84 @@ import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
 import { MovieCard } from "utils/cards";
 import { ErrorPage } from "components/errorPage/ErrorPage";
+import setActiveGenreElementStyle from "utils/dom/setActiveElementStyle";
 
 export const Discover: React.FC = ({}) => {
   const {
     genres,
-    is_loading,
-    set_is_loading,
+    isLoading,
+    setIsLoading,
     error,
-    set_error,
-    error_message,
-    set_error_message,
+    setError,
+    errorMessage,
+    setErrorMessage,
   } = React.useContext(GlobalStateContext);
+
+  // State to track the current active genre. This will help to remove active attribute from when we change to a new genre.
+  const [currentActiveGenre, setCurrentActiveGenre] = useState<number>(0);
+
   const [data, set_data] = useState<Movies>({ results: [] });
 
   const fetch_movie_with_genre = async (
     event?: React.MouseEvent<HTMLElement>
   ) => {
-    set_is_loading(true);
     try {
-      if (event) {
-        const url = "/discover/movie";
-        const query = `&with_genres=${event.currentTarget.id}`;
+      event &&
+        (async () => {
+          setActiveGenreElementStyle(
+            parseInt(event.currentTarget.id),
+            setCurrentActiveGenre,
+            currentActiveGenre
+          );
 
-        const data = await API.fetch_data<Movies>(url, query);
+          const url = "/discover/movie";
+          const query = `&with_genres=${event.currentTarget.id}`;
 
-        set_data((prevState) => ({
-          ...prevState,
-          results: data.results,
-        }));
-      }
-      set_is_loading(false);
-    } catch (error) {
-      console.log(error);
+          const data = await API.fetch_data<Movies>(url, query);
+
+          set_data((prevState) => ({
+            ...prevState,
+            results: data.results,
+          }));
+        })();
+
+      setIsLoading(false);
+    } catch (error: any) {
+      setError(true);
+      setErrorMessage("An error has occured. Try again.");
     }
   };
 
   useEffect(() => {
     fetch_movie_with_genre();
+
+    return () => {
+      setError(false);
+      setErrorMessage("");
+    };
   }, [genres]);
 
-  if (is_loading) {
-    return <Loader />;
-  }
   if (error) {
-    return <ErrorPage error_message={error_message} />;
+    return <ErrorPage error_message={errorMessage} />;
+  }
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
     <div className="content_wrapper flex_center">
-      <Section title="Discover">
-        <div className="flex_container">
-          {genres.genres.map((genre: any, key: number) => {
-            return (
-              <ActionSpan
-                text={genre.name}
-                key={key}
-                id={genre.id.toString()}
-                onClick={fetch_movie_with_genre}
-              />
-            );
-          })}
-        </div>
+      <Section title="Discover" wrap>
+        {genres.genres.slice(0, 8).map((genre: any, key: number) => {
+          return (
+            <ActionSpan
+              text={genre.name}
+              key={key}
+              id={genre.id.toString()}
+              onClick={fetch_movie_with_genre}
+            />
+          );
+        })}
       </Section>
       <Section title="">
         {data.results.map((movie, key: number) => {

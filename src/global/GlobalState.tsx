@@ -12,18 +12,18 @@ const GlobalState = ({
     localStorage.getItem("movie_in_view") || "{}"
   );
 
-  const [search_query, set_search_query] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const [current_moview_in_view, set_current_moview_in_view] =
+  const [currentMoviewInView, setCurrentMoviewInView] =
     useState<Movie>(currentStoredMoview);
 
   const [genres, set_genres] = useState({ genres: [] });
-  const [is_loading, set_is_loading] = useState(true);
-  const [error, set_error] = useState(false);
-  const [error_message, set_error_message] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const saveToLocalStorage = (movie: Movie) => {
-    set_current_moview_in_view(movie);
+    setCurrentMoviewInView(movie);
     localStorage.setItem("movie_in_view", JSON.stringify(movie));
   };
 
@@ -35,16 +35,16 @@ const GlobalState = ({
 
   const state = {
     genres,
-    search_query,
-    set_search_query,
-    current_moview_in_view,
+    searchQuery,
+    setSearchQuery,
+    currentMoviewInView,
     saveToLocalStorage,
-    is_loading,
-    set_is_loading,
+    isLoading,
+    setIsLoading,
     error,
-    set_error,
-    error_message,
-    set_error_message,
+    setError,
+    errorMessage,
+    setErrorMessage,
   };
 
   return (

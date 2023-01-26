@@ -1,15 +1,7 @@
-.flex_container {
-  display: flex;
-  width: 100%;
-  overflow-x: scroll;
-  gap: 1em;
-  position: relative;
+div[genre_active] {
+  background-color: var(--bg-color-white);
 }
 
-@media screen and (max-width: 950px) {
-  .flex_container {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+div[genre_active] > p {
+  color: var(--text-color-dark);
 }

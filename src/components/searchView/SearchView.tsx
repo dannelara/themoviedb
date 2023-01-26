@@ -25,9 +25,31 @@ export const SearchView: React.FC = ({}) => {
     results: [],
   });
 
+  const [noResults, setNoResults] = useState(false);
+
+  const fetchData = async (
+    debounce_query: String,
+    abortSignal: AbortSignal
+  ) => {
+    const data = await API.fetch_data<Movies>(
+      "/search/movie",
+      `&query=${debounce_query}`,
+      abortSignal
+    );
+
+    if (data.results.length > 0)
+      set_data((prevState) => ({
+        ...prevState,
+        results: data.results,
+      }));
+    else {
+      setNoResults(true);
+    }
+  };
+
   useEffect(() => {
     const abortSignal = abortController.signal;
-
+    setNoResults(false);
     try {
       (async () => {
         if (!debounce_query) {
@@ -39,16 +61,7 @@ export const SearchView: React.FC = ({}) => {
           return;
         }
 
-        const data = await API.fetch_data<Movies>(
-          "/search/movie",
-          `&query=${debounce_query}`,
-          abortSignal
-        );
-
-        set_data((prevState) => ({
-          ...prevState,
-          results: data.results,
-        }));
+        fetchData(debounce_query, abortSignal);
       })();
     } catch (error) {
       set_error(true);
@@ -68,11 +81,25 @@ export const SearchView: React.FC = ({}) => {
     <div className="content_wrapper flex_center">
       <Section title="Search">
         <Section title={search_query && "Top results"}>
-          {data.results.map((movie, key: number) => {
-            return <MovieCard movie={movie} key={key} />;
-          })}
+          {noResults ? (
+            <div className="flex_center">
+              <span className="">
+                No results found for {'"' + debounce_query + '"'}{" "}
+              </span>
+            </div>
+          ) : (
+            data.results.map((movie, key: number) => {
+              return <MovieCard movie={movie} key={key} />;
+            })
+          )}
         </Section>
       </Section>
     </div>
   );
 };
+
+{
+  /* <div className="flex_center">
+<span className="">{current_moview_in_view.overview}</span>
+</div> */
+}
