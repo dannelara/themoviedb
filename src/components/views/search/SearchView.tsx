@@ -3,8 +3,8 @@ import Movies from "interfaces/Movie";
 import React, { useEffect, useState } from "react";
 import * as API from "fetch/fetch";
 import { Section } from "components/section/Section";
-import { MovieCard } from "utils/cards";
-import useDebounceValue from "utils/debounce/useDebounceValue";
+import { MovieCard } from "utils";
+import { useDebounceValue } from "utils";
 import { ErrorPage } from "components/views/error/ErrorPage";
 
 export const SearchView: React.FC = ({}) => {

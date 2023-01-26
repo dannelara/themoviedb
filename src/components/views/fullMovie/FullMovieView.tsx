@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import * as API from "fetch/fetch";
 import "./Styles.css";
 import { Section } from "components/section/Section";
-import { ActorCard } from "utils/cards";
+import { ActorCard } from "utils";
 import MovieDetails, { Actor } from "interfaces/MovieDetails";
 import { GlobalStateContext } from "global/GlobalState";
-import { Loader } from "utils/loader/Loader";
+import { Loader } from "utils";
 import { ErrorPage } from "components/views/error/ErrorPage";
 
 const FullMovieView: React.FC = () => {

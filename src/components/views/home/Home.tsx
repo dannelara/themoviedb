@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Section } from "components/section/Section";
-import { MovieCard } from "utils/cards";
+import { MovieCard } from "utils";
 import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
-import { Loader } from "utils/loader/Loader";
+import { Loader } from "utils";
 import { ErrorPage } from "components/views/error/ErrorPage";
 import { GlobalStateContext } from "global/GlobalState";
 

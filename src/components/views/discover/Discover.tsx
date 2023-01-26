@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Styles.css";
-import { Loader } from "utils/loader/Loader";
-import { GlobalStateContext } from "global/GlobalState";
-import { Section } from "components/section/Section";
-import { ActionSpan } from "utils/actionSpan/ActionSpan";
-import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
-import { MovieCard } from "utils/cards";
+import { Section } from "components/section/Section";
+import * as API from "fetch/fetch";
 import { ErrorPage } from "components/views/error/ErrorPage";
+import { Loader } from "utils";
+import { GlobalStateContext } from "global/GlobalState";
+import { ActionSpan } from "utils/actionSpan/ActionSpan";
+
+import { MovieCard } from "utils";
 import setActiveGenreElementStyle from "utils/dom/setActiveElementStyle";
-import { RangeSlider } from "utils/rangeSlider/RangeSlider";
-import useDebounceValue from "utils/debounce/useDebounceValue";
+import { RangeSlider } from "utils";
+import { useDebounceValue } from "utils";
 
 export const Discover: React.FC = ({}) => {
   const {

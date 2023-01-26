@@ -1,4 +1,4 @@
-const set_active_genre_style = (
+const setActiveGenreElementStyle = (
   id: number,
   setState: React.Dispatch<React.SetStateAction<number>>,
   oldId?: number
@@ -16,4 +16,4 @@ const set_active_genre_style = (
   setState(id);
 };
 
-export default set_active_genre_style;
+export default setActiveGenreElementStyle;
