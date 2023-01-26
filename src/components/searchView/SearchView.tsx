@@ -33,10 +33,11 @@ export const SearchView: React.FC = ({}) => {
 
   const [noResults, setNoResults] = useState(false);
 
-  const filterResultBasedOnRating = (data: {
-    results: [{ vote_average: number }];
-  }) => {
-    return data.results.sort((a, b) => a.vote_average - b.vote_average);
+  const filterResultBasedOnRating = (data: any) => {
+    return data.results.sort(
+      (a: { popularity: number }, b: { popularity: number }) =>
+        a.popularity + b.popularity
+    );
   };
 
   const fetchData = async (
@@ -53,7 +54,7 @@ export const SearchView: React.FC = ({}) => {
     if (data.results.length > 0)
       set_data((prevState) => ({
         ...prevState,
-        results: data.results,
+        results: filterResultBasedOnRating(data),
       }));
     else {
       setNoResults(true);
