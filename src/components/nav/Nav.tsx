@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./Styles.css";
 import burger_menu_open_image from "assets/images/MenuIcon.png";
 import burger_menu_close_image from "assets/images/Union.png";
-import sections from "assets/data/sections";
+import sections from "assets/misc/sections";
 import { Link, NavLink } from "react-router-dom";
 export const Nav: React.FC = ({}) => {
   const [isNavActive, setIsNavActive] = useState(false);
