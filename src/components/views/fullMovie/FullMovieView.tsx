@@ -111,7 +111,7 @@ const FullMovieView: React.FC = () => {
               id="player"
               itemType="text/html"
               width="100%"
-              height="390"
+              height="600"
               src={`https://www.youtube.com/embed/${data.video_key}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1`}
             ></iframe>
           )}

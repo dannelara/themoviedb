@@ -13,14 +13,14 @@ const GlobalState = ({
   );
 
   const [searchQuery, setSearchQuery] = useState("");
-
-  const [currentMoviewInView, setCurrentMoviewInView] =
-    useState<Movie>(currentStoredMoview);
-
+  const [rangeval, setRangeval] = useState<number>(5);
   const [genres, set_genres] = useState({ genres: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [currentMoviewInView, setCurrentMoviewInView] =
+    useState<Movie>(currentStoredMoview);
 
   const saveToLocalStorage = (movie: Movie) => {
     setCurrentMoviewInView(movie);
@@ -45,6 +45,8 @@ const GlobalState = ({
     setError,
     errorMessage,
     setErrorMessage,
+    rangeval,
+    setRangeval,
   };
 
   return (
