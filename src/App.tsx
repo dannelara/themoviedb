@@ -1,3 +1,10 @@
+/**
+ * The starting point of the application.
+ *
+ * @author Daniel Martinez lara
+ * @version 1.0.0
+ */
+
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
