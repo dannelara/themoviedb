@@ -1,0 +1,38 @@
+.closable_container {
+  min-height: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.closable_back {
+  height: auto;
+  width: auto;
+  padding: 2em 0 2em 0;
+}
+
+.controller_container {
+  cursor: pointer;
+  width: fit-content;
+  border-bottom: 1px solid var(--bg-color-white);
+}
+
+.controller_container::after {
+  display: inline-block;
+  content: ">";
+  margin-left: 1em;
+  font-size: 1.2em;
+  color: var(--bg-color-white);
+}
+
+div[unlocked]::after {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+div[unlocked] {
+  border-bottom: none;
+  border-top: 1px solid var(--bg-color-white);
+}

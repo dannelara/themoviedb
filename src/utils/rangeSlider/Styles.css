@@ -1,16 +1,15 @@
 .slidecontainer {
   position: relative;
-  width: fit-content; /* Width of the outside container */
+  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
 .slider {
-  /* -webkit-appearance: none; */
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  height: 20px;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
@@ -23,8 +22,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: var(--bg-color-light-dark);
   cursor: pointer;

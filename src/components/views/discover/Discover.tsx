@@ -12,6 +12,7 @@ import { MovieCard } from "utils";
 import setActiveGenreElementStyle from "utils/dom/setActiveElementStyle";
 import { RangeSlider } from "utils";
 import { useDebounceValue } from "utils";
+import { Closeable } from "utils/closeable/Closeable";
 
 export const Discover: React.FC = ({}) => {
   const {
@@ -108,7 +109,9 @@ export const Discover: React.FC = ({}) => {
       </Section>
 
       <Section title="" wrap>
-        <RangeSlider minVal={0} maxVal={10} />
+        <Closeable text={"Filters"}>
+          <RangeSlider minVal={0} maxVal={10} />
+        </Closeable>
       </Section>
       <Section title="">
         {data.results.map((movie, key: number) => {

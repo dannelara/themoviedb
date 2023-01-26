@@ -11,7 +11,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ minVal, maxVal }) => {
 
   return (
     <div className="slidecontainer">
-      <span>Filter by IMDB score</span>
+      <span>IMDB score</span>
       <div className="flex_center relative">
         <input
           type="range"
