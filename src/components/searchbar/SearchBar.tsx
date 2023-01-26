@@ -5,7 +5,7 @@ import "./Styles.css";
 import { useNavigate } from "react-router-dom";
 
 export const SearchBar: React.FC = ({}) => {
-  const { setSearchquery } = React.useContext(GlobalStateContext);
+  const { setSearchQuery } = React.useContext(GlobalStateContext);
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export const SearchBar: React.FC = ({}) => {
           required
           placeholder="Search movie titles"
           className="search_bar_input"
-          onChange={(e) => setSearchquery(e.currentTarget.value)}
+          onChange={(e) => setSearchQuery(e.currentTarget.value)}
         />
       </div>
     </div>

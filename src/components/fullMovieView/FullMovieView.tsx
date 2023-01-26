@@ -98,7 +98,7 @@ const FullMovieView: React.FC = () => {
       </Section>
       <Section title="Actors">
         <div className="flex_container_scroll">
-          {data.cast.map((actor, key: number) => {
+          {data.cast.slice(0, 6).map((actor, key: number) => {
             return <ActorCard data={actor} key={key} />;
           })}
         </div>
