@@ -4,7 +4,7 @@ import { MovieCard } from "utils/cards";
 import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
 import { Loader } from "utils/loader/Loader";
-import { ErrorPage } from "components/errorPage/ErrorPage";
+import { ErrorPage } from "components/views/error/ErrorPage";
 import { GlobalStateContext } from "global/GlobalState";
 
 interface Data {

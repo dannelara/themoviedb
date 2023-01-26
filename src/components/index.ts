@@ -1,4 +1,4 @@
-import { Main } from "./main/Main";
+import { Main } from "./views/main/Main";
 import { Nav } from "./nav/Nav";
 import { SearchBar } from "./searchbar/SearchBar";
 import { CustumRouter } from "./customRouter/CustumRouter";

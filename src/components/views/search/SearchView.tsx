@@ -5,7 +5,7 @@ import * as API from "fetch/fetch";
 import { Section } from "components/section/Section";
 import { MovieCard } from "utils/cards";
 import useDebounceValue from "utils/debounce/useDebounceValue";
-import { ErrorPage } from "components/errorPage/ErrorPage";
+import { ErrorPage } from "components/views/error/ErrorPage";
 
 export const SearchView: React.FC = ({}) => {
   const {

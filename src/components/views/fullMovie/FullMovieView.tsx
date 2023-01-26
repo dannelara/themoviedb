@@ -6,7 +6,7 @@ import { ActorCard } from "utils/cards";
 import MovieDetails, { Actor } from "interfaces/MovieDetails";
 import { GlobalStateContext } from "global/GlobalState";
 import { Loader } from "utils/loader/Loader";
-import { ErrorPage } from "components/errorPage/ErrorPage";
+import { ErrorPage } from "components/views/error/ErrorPage";
 
 const FullMovieView: React.FC = () => {
   const {

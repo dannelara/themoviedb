@@ -24,7 +24,7 @@
 
   --card-big-max-height: 382px;
   --card-big-max-width: 680px;
-
+  --card-big-min-height: 300px;
   --card-small-max-height: 382.74px;
   --card-small-max-width: 250px;
   --card-small-min-width: 120px;

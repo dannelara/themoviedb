@@ -39,12 +39,6 @@
   object-fit: cover;
 }
 
-/* .card_small {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-} */
-
 .card_description_big {
   display: none;
   position: absolute;
@@ -93,15 +87,9 @@
 @media screen and (max-width: 1300px) {
   .card_big {
     max-width: 100%;
+    max-height: var(--card-big-min-height);
   }
 }
-
-/* @media screen and (max-width: 950px) {
-  .card_big {
-    width: 100%;
-    min-width: 100%;
-  }
-} */
 
 @media screen and (max-width: 650px) {
   .card_small {

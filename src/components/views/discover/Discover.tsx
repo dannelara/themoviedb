@@ -7,7 +7,7 @@ import { ActionSpan } from "utils/actionSpan/ActionSpan";
 import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
 import { MovieCard } from "utils/cards";
-import { ErrorPage } from "components/errorPage/ErrorPage";
+import { ErrorPage } from "components/views/error/ErrorPage";
 import setActiveGenreElementStyle from "utils/dom/setActiveElementStyle";
 
 export const Discover: React.FC = ({}) => {
