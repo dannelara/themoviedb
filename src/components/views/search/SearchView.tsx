@@ -8,14 +8,8 @@ import useDebounceValue from "utils/debounce/useDebounceValue";
 import { ErrorPage } from "components/views/error/ErrorPage";
 
 export const SearchView: React.FC = ({}) => {
-  const {
-    searchQuery,
-    error,
-    setError,
-    errorMessage,
-    setSearchQuery,
-    setErrorMessage,
-  } = React.useContext(GlobalStateContext);
+  const { searchQuery, error, setError, errorMessage, setErrorMessage } =
+    React.useContext(GlobalStateContext);
 
   // Since I dont want the application to make a request everytime the user writes something to the search input
   // I'm using a debunce value function to wait 500ms before the use effect sees the updated query string and -
@@ -50,7 +44,6 @@ export const SearchView: React.FC = ({}) => {
       abortSignal
     );
 
-    console.log(data);
     if (data.results.length > 0)
       set_data((prevState) => ({
         ...prevState,

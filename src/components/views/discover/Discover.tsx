@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Styles.css";
 import { Loader } from "utils/loader/Loader";
 import { GlobalStateContext } from "global/GlobalState";
@@ -22,7 +22,6 @@ export const Discover: React.FC = ({}) => {
     errorMessage,
     setErrorMessage,
     rangeval,
-    setRangeval,
   } = React.useContext(GlobalStateContext);
 
   // State to track the current active genre. This will help to remove active attribute from when we change to a new genre.

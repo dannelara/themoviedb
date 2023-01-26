@@ -8,9 +8,9 @@ import { ErrorPage } from "components/views/error/ErrorPage";
 import { GlobalStateContext } from "global/GlobalState";
 
 interface Data {
-  trending_movies: Movies;
-  now_playing_movies: Movies;
-  top_rated_movies: Movies;
+  trendingMovies: Movies;
+  nowPlayingMovies: Movies;
+  topRatedMovies: Movies;
 }
 
 const Home: React.FC = ({}) => {
@@ -24,9 +24,9 @@ const Home: React.FC = ({}) => {
   } = React.useContext(GlobalStateContext);
 
   const [data, set_data] = useState<Data>({
-    trending_movies: { results: [] },
-    now_playing_movies: { results: [] },
-    top_rated_movies: { results: [] },
+    trendingMovies: { results: [] },
+    nowPlayingMovies: { results: [] },
+    topRatedMovies: { results: [] },
   });
 
   const fetchData = async () => {
@@ -39,9 +39,9 @@ const Home: React.FC = ({}) => {
 
       set_data((prevState) => ({
         ...prevState,
-        trending_movies: trending,
-        now_playing_movies: now_playing,
-        top_rated_movies: top_rated,
+        trendingMovies: trending,
+        nowPlayingMovies: now_playing,
+        topRatedMovies: top_rated,
       }));
 
       setIsLoading(false);
@@ -71,18 +71,18 @@ const Home: React.FC = ({}) => {
   return (
     <div>
       <Section title="Trending">
-        {data.trending_movies.results.slice(0, 2).map((movie, key: number) => {
+        {data.trendingMovies.results.slice(0, 2).map((movie, key: number) => {
           return <MovieCard big movie={movie} key={key} />;
         })}
       </Section>
       <Section title="Now playing" wrap>
-        {data.now_playing_movies.results.map((movie, key: number) => {
+        {data.nowPlayingMovies.results.map((movie, key: number) => {
           // Fixa så att filmer utan specifik inte används.
           return <MovieCard movie={movie} key={key} />;
         })}
       </Section>
       <Section title="Top rated" wrap>
-        {data.top_rated_movies.results.map((movie, key: number) => {
+        {data.topRatedMovies.results.map((movie, key: number) => {
           return <MovieCard movie={movie} key={key} />;
         })}
       </Section>

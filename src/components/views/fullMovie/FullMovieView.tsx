@@ -16,16 +16,16 @@ const FullMovieView: React.FC = () => {
     setIsLoading,
     error,
     setError,
-    error_message,
+    errorMessage,
     setErrorMessage,
   } = React.useContext(GlobalStateContext);
 
-  const [data, set_data] = useState<MovieDetails>({
+  const [data, setData] = useState<MovieDetails>({
     cast: [],
     video_key: "",
   });
 
-  const [movie_genres, set_movie_genres] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -33,16 +33,16 @@ const FullMovieView: React.FC = () => {
         `/movie/${currentMoviewInView.id}/credits`
       );
 
-      const video_key_response = await API.fetch_data<{
+      const videoKeyResponse = await API.fetch_data<{
         results: [{ key: any }];
       }>(`/movie/${currentMoviewInView.id}/videos`);
 
-      set_data((prevState) => ({
+      setData((prevState) => ({
         ...prevState,
         cast: cast.cast,
         video_key:
-          video_key_response.results[video_key_response.results.length - 1]
-            ?.key || "",
+          videoKeyResponse.results[videoKeyResponse.results.length - 1]?.key ||
+          "",
       }));
 
       setIsLoading(false);
@@ -52,8 +52,8 @@ const FullMovieView: React.FC = () => {
     }
   };
 
-  const load_genres = () => {
-    set_movie_genres(
+  const loadGenres = () => {
+    setMovieGenres(
       currentMoviewInView.genre_ids.map((id: number) => {
         return genres.genres.filter((e: any) => e.id === id)[0];
       })
@@ -62,10 +62,8 @@ const FullMovieView: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-    load_genres();
+    loadGenres();
 
-    // Reset incase we got an error when the page was loading so that it wont cause issues
-    // inside of other components.
     return () => {
       setError(false);
       setErrorMessage("");
@@ -76,13 +74,13 @@ const FullMovieView: React.FC = () => {
     return <Loader />;
   }
   if (error) {
-    return <ErrorPage error_message={error_message} />;
+    return <ErrorPage error_message={errorMessage} />;
   }
 
   return (
     <div className="wrapper">
       <Section title="Genres">
-        {movie_genres.map((e: any, key: number) => {
+        {movieGenres.map((e: any, key: number) => {
           return (
             <p className="text_xsmall text_big default_color " key={key}>
               {e.name}
@@ -108,6 +106,7 @@ const FullMovieView: React.FC = () => {
         <div className="movie_player_container">
           {data.video_key && (
             <iframe
+              title="Trailer player"
               id="player"
               itemType="text/html"
               width="100%"
