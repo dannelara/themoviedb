@@ -42,7 +42,6 @@
   color: var(--text-color-white);
   display: block;
   height: 100%;
-  border-radius: 5px;
 }
 
 .cover_link:hover > .card_description_big {
@@ -90,6 +89,13 @@
     max-width: 100%;
   }
 }
+
+/* @media screen and (max-width: 950px) {
+  .card_big {
+    width: 100%;
+    min-width: 100%;
+  }
+} */
 
 @media screen and (max-width: 650px) {
   .card_small {
