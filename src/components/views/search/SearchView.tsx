@@ -105,8 +105,3 @@ export const SearchView: React.FC = ({}) => {
   );
 };
 
-{
-  /* <div className="flex_center">
-<span className="">{current_moview_in_view.overview}</span>
-</div> */
-}
