@@ -10,9 +10,10 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ minVal, maxVal }) => {
   const { rangeval, setRangeval } = React.useContext(GlobalStateContext);
 
   return (
-    <div className="slidecontainer">
+    <div className="slide_container">
       <span>IMDB score</span>
-      <div className="flex_center relative">
+
+      <div className="flex_center">
         <input
           type="range"
           min={minVal}
@@ -23,6 +24,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ minVal, maxVal }) => {
           className="slider"
           id="myRange"
         />
+
         <span>{rangeval}</span>
       </div>
     </div>

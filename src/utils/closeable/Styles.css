@@ -1,8 +1,11 @@
 .closable_container {
   min-height: auto;
-  width: 100%;
+  width: fit-content;
   max-width: 100%;
   max-height: 100%;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  background-color: var(--bg-color-dark);
+  border-radius: 5px;
 }
 
 .closable_back {
@@ -14,7 +17,6 @@
 .controller_container {
   cursor: pointer;
   width: fit-content;
-  border-bottom: 1px solid var(--bg-color-white);
 }
 
 .controller_container::after {
@@ -30,9 +32,4 @@ div[unlocked]::after {
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
-}
-
-div[unlocked] {
-  border-bottom: none;
-  border-top: 1px solid var(--bg-color-white);
 }
