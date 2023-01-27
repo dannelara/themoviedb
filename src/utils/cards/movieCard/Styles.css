@@ -1,6 +1,6 @@
 .card_big {
   flex-grow: 1;
-  max-width: 50%;
+  max-width: 48%;
   max-height: var(--card-big-max-height);
   border-radius: 10px;
 }

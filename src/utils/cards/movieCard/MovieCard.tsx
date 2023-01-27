@@ -27,7 +27,9 @@ export const MovieCard: React.FC<MovieCardProps> = ({ big, movie }) => {
         <img
           src={
             movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              ? `https://image.tmdb.org/t/p/${
+                  big ? "w1280_and_h720_face" : "w500"
+                }${movie.poster_path}`
               : no_image_found
           }
           className="cover_image"

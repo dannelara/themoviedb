@@ -1,10 +1,10 @@
 .content_wrapper {
-  padding: 2em 0 1em 0;
+  padding: 1em 0 1em 0;
   display: flex;
   justify-content: center;
-
+  height: auto;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 2%;
   width: 100%;
 }
 
