@@ -107,7 +107,3 @@ a {
 span {
   color: var(--text-color-white);
 }
-
-::-webkit-scrollbar {
-  display: none;
-}

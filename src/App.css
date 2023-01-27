@@ -5,6 +5,9 @@
   background-color: var(--bg-color-light-dark);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 @media screen and (min-width: 950px) {
   .wrapper_flex {
     display: flex;
