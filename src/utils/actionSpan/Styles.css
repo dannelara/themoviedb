@@ -1,17 +1,20 @@
 .action_span_container {
-  min-width: 150px;
-  max-width: 150px;
+  display: inline-flex;
+  min-width: 100px;
+  max-width: 100px;
   height: 40px;
   cursor: pointer;
   border-radius: 100px;
   border: 2px solid #ffffff;
   overflow: hidden;
+  padding: 4px 12px;
+  white-space: nowrap;
 }
 
 .action_span_container > p {
   color: var(--text-color-white);
   font-weight: var(--font-weight-700);
-  font-size: var(--font-size-xsmall);
+  font-size: 12px;
   text-align: center;
 }
 

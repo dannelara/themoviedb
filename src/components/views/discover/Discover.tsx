@@ -94,7 +94,7 @@ export const Discover: React.FC = ({}) => {
   return (
     <div className="content_wrapper flex_center">
       <Section title="Discover" wrap>
-        {genres.genres.slice(0, 8).map((genre: any, key: number) => {
+        {genres.genres.map((genre: any, key: number) => {
           return (
             <ActionSpan
               text={genre.name}
