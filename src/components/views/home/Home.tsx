@@ -77,7 +77,7 @@ const Home: React.FC = ({}) => {
       </Section>
       <Section title="Now playing" wrap>
         {data.nowPlayingMovies.results.map((movie, key: number) => {
-          // Fixa så att filmer utan specifik inte används.
+  
           return <MovieCard movie={movie} key={key} />;
         })}
       </Section>
