@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Section } from "components/section/Section";
-import { MovieCard } from "components";
 import * as API from "fetch/fetch";
-import Movies from "interfaces/Movie";
-import { Loader } from "components";
-import { ErrorPage } from "views";
 import { GlobalStateContext } from "global/GlobalState";
+import Movies from "interfaces/Movie";
+import { Section, Loader, MovieCard } from "components";
+import { ErrorPage } from "views";
 
 interface Data {
   trendingMovies: Movies;

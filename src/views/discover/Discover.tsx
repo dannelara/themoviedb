@@ -3,16 +3,16 @@ import "./Styles.css";
 import * as API from "fetch/fetch";
 import { GlobalStateContext } from "global/GlobalState";
 import Movies from "interfaces/Movie";
-
 import { ErrorPage } from "views";
-import { Section } from "components";
-import { Loader } from "components";
-import { ActionSpan } from "components";
-import { Closeable } from "components";
-import { MovieCard } from "components";
-import { RangeSlider } from "components";
-import { setActiveGenreElementStyle } from "utils";
-import { useDebounceValue } from "utils";
+import {
+  Section,
+  Loader,
+  ActionSpan,
+  Closeable,
+  MovieCard,
+  RangeSlider,
+} from "components";
+import { setActiveGenreElementStyle, useDebounceValue } from "utils";
 
 export const Discover: React.FC = ({}) => {
   const {

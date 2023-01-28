@@ -1,9 +1,8 @@
-import { GlobalStateContext } from "global/GlobalState";
-import Movies from "interfaces/Movie";
 import React, { useEffect, useState } from "react";
 import * as API from "fetch/fetch";
-import { Section } from "components/section/Section";
-import { MovieCard } from "components";
+import { GlobalStateContext } from "global/GlobalState";
+import Movies from "interfaces/Movie";
+import { Section, MovieCard } from "components";
 import { useDebounceValue } from "utils";
 import { ErrorPage } from "views";
 

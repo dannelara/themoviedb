@@ -1,7 +1,7 @@
 import React from "react";
 import "./Styles.css";
 
-import { SearchBar } from "components/searchbar/SearchBar";
+import { SearchBar } from "components";
 
 interface MainProps {
   children: JSX.Element | JSX.Element[];
