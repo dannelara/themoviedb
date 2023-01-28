@@ -3,9 +3,9 @@ import Movies from "interfaces/Movie";
 import React, { useEffect, useState } from "react";
 import * as API from "fetch/fetch";
 import { Section } from "components/section/Section";
-import { MovieCard } from "utils";
+import { MovieCard } from "components";
 import { useDebounceValue } from "utils";
-import { ErrorPage } from "components/views/error/ErrorPage";
+import { ErrorPage } from "views";
 
 export const SearchView: React.FC = ({}) => {
   const { searchQuery, error, setError, errorMessage, setErrorMessage } =
@@ -104,4 +104,3 @@ export const SearchView: React.FC = ({}) => {
     </div>
   );
 };
-

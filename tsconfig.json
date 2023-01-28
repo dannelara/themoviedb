@@ -4,6 +4,8 @@
     "paths": {
       "components": ["components/"],
       "utils": ["utils/"],
+      "routing": ["routing"],
+      "views": ["views"],
       "interfaces/*": ["interfaces/*"]
     },
     "target": "es5",

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Section } from "components/section/Section";
-import { MovieCard } from "utils";
+import { MovieCard } from "components";
 import * as API from "fetch/fetch";
 import Movies from "interfaces/Movie";
-import { Loader } from "utils";
-import { ErrorPage } from "components/views/error/ErrorPage";
+import { Loader } from "components";
+import { ErrorPage } from "views";
 import { GlobalStateContext } from "global/GlobalState";
 
 interface Data {
@@ -77,7 +77,6 @@ const Home: React.FC = ({}) => {
       </Section>
       <Section title="Now playing" wrap>
         {data.nowPlayingMovies.results.map((movie, key: number) => {
-  
           return <MovieCard movie={movie} key={key} />;
         })}
       </Section>

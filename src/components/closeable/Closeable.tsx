@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { ActionSpan } from "utils/actionSpan/ActionSpan";
+import { ActionSpan } from "components/actionSpan/ActionSpan";
 import "./Styles.css";
 interface CloseableProps {
   text: String;

@@ -1,3 +1,9 @@
+/**
+ * The starting point of the application.
+ *
+ * @author Daniel Martinez lara
+ * @version 1.0.0
+ */
 const setActiveGenreElementStyle = (
   id: number,
   setState: React.Dispatch<React.SetStateAction<number>>,
