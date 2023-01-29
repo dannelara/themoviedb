@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5em;
+  width: 100%;
 }
 
 .flex_container_scroll {
@@ -34,7 +35,7 @@
 }
 .section_full {
   width: 95%;
-  padding: 1em 0 1em 0;
+  padding: 2em 0 1em 0;
 }
 
 .content_items {
