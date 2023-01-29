@@ -1,12 +1,9 @@
 .content_wrapper {
-  position: relative;
-  padding: 1em 0 1em 0;
   display: flex;
-  justify-content: center;
-  height: auto;
   flex-wrap: wrap;
-  gap: 2%;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
 }
 
 .flex_container_scroll {
@@ -16,26 +13,6 @@
   overflow-x: scroll;
   gap: 1em;
 }
-
-/* .flex_container_scroll::-webkit-scrollbar {
-  display: none;
-} */
-
-/* .flex_container_scroll::after {
-  content: "";
-  width: 60px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    #fff 100%
-  );
-  will-change: opacity;
-  pointer-events: none;
-} */
 
 .flex_container_scroll::-webkit-scrollbar {
   width: 20px;
